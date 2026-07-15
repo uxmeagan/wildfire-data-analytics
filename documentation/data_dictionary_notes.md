@@ -1,14 +1,33 @@
 # Data Dictionary Notes
 
+## Primary Table
 
-## Raw Database Structure
+### Fires
 
-The original SQLite database contains 27 tables. These tables include the primary wildfire records table as well as supporting lookup/reference tables.
+The `Fires` table contains one record per wildfire event.
 
-Initial exploration was performed using:
+### Grouped Categories of Variables
 
-```sql
-SELECT name
-FROM sqlite_master
-WHERE type='table'
-ORDER BY name;
+| Category | Columns |
+|----------|----------|
+| Identifiers | OBJECTID, FOD_ID, FPA_ID|
+| Fire Details | FIRE_NAME, FIRE_YEAR, FIRE_SIZ, FIRE_SIZE_CLASS, FIRE_CODE, FIRE_NAME |
+| Dates | DISCOVERY_DATE, DISCOVERY_DOY, DISCOVERY_TIME, CONT_DATE, CONT_DOY, CONT_TIME |
+| Cause | STAT_CAUSE_CODE, STAT_CAUSE_DESCR |
+| Location | STATE, COUNTY, LATITUDE, LONGITUDE, FIPS_CODE, FIPS_NAME, Shape |
+| Ownership | OWNER_CODE, OWNER_DESCR |
+| Reporting | SOURCE_SYSTEM_TYPE, SOURCE_SYSTEM, NWCG_REPORTING_AGENCY, NWCG_REPORTING_UNIT_ID, NWCG_REPORTING_UNIT_NAME, SOURCE_REPORTING_UNIT, SOURCE_REPORTING_UNIT_NAME, LOCAL_FIRE_REPORT_ID, LOCAL_INCIDENT_ID |
+| External References | ICS, MTBS identifiers |
+
+### Primary Fields Used in Analysis
+
+- FIRE_YEAR
+- FIRE_SIZE
+- FIRE_SIZE_CLASS
+- STATE
+- COUNTY
+- STAT_CAUSE_DESCR
+- OWNER_DESCR
+- DISCOVERY_DATE
+- LATITUDE
+- LONGITUDE
