@@ -85,3 +85,25 @@ ORDER BY STAT_CAUSE_CODE;
 -- Lightning accounts for the greatest total acreage burned.
 -- Lightning-caused fires have the largest average fire size
 
+
+
+
+----------------------
+-- May not include this look at number of fires by year and cause 
+----------------------
+
+SELECT 
+	FIRE_YEAR,
+	STAT_CAUSE_DESCR,
+	COUNT(*) as num_of_fires
+FROM Fires
+GROUP BY 
+	FIRE_YEAR,
+	STAT_CAUSE_DESCR
+ORDER BY 
+	FIRE_YEAR,
+	num_of_fires DESC;
+
+
+
+    
