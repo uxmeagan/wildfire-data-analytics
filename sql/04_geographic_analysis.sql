@@ -1,6 +1,6 @@
 /*
 ===========================================================
-Project: US Wildfire Analytics
+Geographical Analysis
 Author: Meagan Barnhurst
 ===========================================================
 */

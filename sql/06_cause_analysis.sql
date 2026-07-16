@@ -155,4 +155,54 @@ ORDER BY
     FIRE_YEAR,
     STAT_CAUSE_DESCR;
 
-    
+
+-------------------------------------
+-- Seasonal: Fire count by month and #1 cause 
+-------------------------------------
+
+SELECT 
+	*
+FROM (
+	SELECT *,
+		RANK() OVER (
+		PARTITION BY month_number
+	ORDER BY fire_count DESC
+			) AS cause_rank
+	FROM (
+		SELECT 
+			strftime('%m', DISCOVERY_DATE) AS month_number,
+			COUNT(*) AS fire_count,
+			STAT_CAUSE_DESCR
+		FROM Fires
+		GROUP BY 
+			month_number,
+			STAT_CAUSE_DESCR 
+		ORDER BY 
+			month_number,
+			STAT_CAUSE_DESCR
+	) AS yearly_causes
+) AS ranked_causes
+WHERE cause_rank = 1;
+
+
+-- Observation:
+-- Debris Burning was the leading wildfire cause during eight months of the year, while Lightning was the
+-- leading cause from June through September.
+
+
+
+------------------------------------------------------------------------
+-- Fire cause and fire size, which causes produce the most large fires
+------------------------------------------------------------------------
+
+SELECT
+    STAT_CAUSE_DESCR,
+    FIRE_SIZE_CLASS,
+    COUNT(*) AS fire_count
+FROM Fires
+GROUP BY
+    STAT_CAUSE_DESCR,
+    FIRE_SIZE_CLASS
+ORDER BY
+    STAT_CAUSE_DESCR,
+    FIRE_SIZE_CLASS;

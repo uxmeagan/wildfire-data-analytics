@@ -1,7 +1,6 @@
 /*
 ===========================================================
-Project: US Wildfire Analytics
-Purpose:
+Data Cleaning
 Author: Meagan Barnhurst
 ===========================================================
 */

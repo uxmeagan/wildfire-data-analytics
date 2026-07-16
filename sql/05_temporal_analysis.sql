@@ -1,13 +1,12 @@
 /*
 ===========================================================
-Project: US Wildfire Analytics
-Purpose:
+Temporal Analysis
 Author: Meagan Barnhurst
 ===========================================================
 */
 
 -----------------------------------------------------------------
--- How does wildfire activity vary by month?
+-- How does wildfire activity vary by month
 -- Number of fires, avg size, and total acreage burned
 -----------------------------------------------------------------
 
@@ -22,7 +21,7 @@ ORDER BY month_number;
 
 
 -----------------------------------------------------------------
--- How have wildfire activity and fire severity changed over time?
+-- How have wildfire activity and fire severity changed over time
 -- Number of fires, avg size, and total acreage burned
 -----------------------------------------------------------------
 

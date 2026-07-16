@@ -1,7 +1,6 @@
 /*
 ===========================================================
-Project: US Wildfire Analytics
-Purpose:
+Land Ownership Analysis
 Author: Meagan Barnhurst
 ===========================================================
 */
