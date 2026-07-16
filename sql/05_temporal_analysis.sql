@@ -34,3 +34,47 @@ FROM Fires
 GROUP BY FIRE_YEAR 
 ORDER BY FIRE_YEAR;
 
+-----------------------------
+-- Largest fire every year 
+-----------------------------
+
+SELECT
+    FIRE_YEAR,
+    MAX(FIRE_SIZE) AS largest_fire
+FROM Fires
+GROUP BY FIRE_YEAR
+ORDER BY FIRE_YEAR;
+
+---------------------------------------
+-- How many fires of each class by year
+---------------------------------------
+
+SELECT
+    FIRE_YEAR,
+    FIRE_SIZE_CLASS,
+    COUNT(*) AS fire_count
+FROM Fires
+GROUP BY 
+	FIRE_YEAR,
+	FIRE_SIZE_CLASS
+ORDER BY 
+	FIRE_YEAR,
+	FIRE_SIZE_CLASS;
+
+
+
+------------------------------------------------------
+-- How many fires of each class by month of the year 
+------------------------------------------------------
+
+SELECT
+	strftime('%m', DISCOVERY_DATE) AS month_number,
+    FIRE_SIZE_CLASS,
+    COUNT(*) AS fire_count
+FROM Fires
+GROUP BY 
+	month_number,
+	FIRE_SIZE_CLASS
+ORDER BY 
+	month_number,
+	FIRE_SIZE_CLASS;

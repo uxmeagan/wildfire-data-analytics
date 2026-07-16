@@ -88,3 +88,48 @@ ORDER BY STAT_CAUSE_CODE;
 
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------
+----------------------
+-- highest fire month per year 
+----------------------
+-- SELECT 
+-- 	*
+-- FROM (
+-- 	SELECT *,
+-- 		RANK() OVER (
+-- 		PARTITION BY FIRE_YEAR
+-- 	ORDER BY fire_count DESC
+-- 			) AS month_rank
+-- 	FROM (
+-- 		SELECT 
+-- 			FIRE_YEAR,
+-- 			strftime('%m', DISCOVERY_DATE) AS month_number,
+-- 			COUNT(*) AS fire_count
+-- 		FROM Fires
+-- 		GROUP BY 
+-- 			FIRE_YEAR,
+-- 			month_number
+-- 		ORDER BY 
+-- 			FIRE_YEAR,
+-- 			month_number
+-- 	) AS yearly_month_count
+-- ) AS ranked_causes
+-- WHERE cause_rank = 1;
