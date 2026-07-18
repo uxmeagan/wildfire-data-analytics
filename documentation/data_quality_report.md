@@ -167,6 +167,16 @@ Dataset Time Period
 
 The dataset covers 1992-2015 and does not represent wildfire activity after 2015.
 
+
+
+
+
+
+
+
+### Fire Owner Description
+More than half of wildfire records do not specify land ownership. Ownership analyses therefore reflect only records with available ownership information and should be interpreted with this limitation in mind.
+
 ## Problem Log
 
 |Issue|Decision|Reason|
