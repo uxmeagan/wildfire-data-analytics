@@ -112,3 +112,23 @@ ORDER BY largest_fire_acres DESC;
 -- Observation:
 -- The largest individual wildfires occurred primarily in western states, with Alaska, Oregon, and Arizona recording the largest single events.
 -- This highlights that wildfire severity is concentrated in specific regions even when total fire frequency is lower.
+
+
+--------------------------------
+-- Number one fire by state
+--------------------------------
+SELECT
+    STATE,
+    FIRE_NAME,
+    FIRE_YEAR,
+    FIRE_SIZE
+FROM (
+    SELECT *,
+        RANK() OVER (
+        PARTITION BY STATE
+        ORDER BY FIRE_SIZE DESC
+        ) AS fire_rank
+    FROM Fires
+) AS ranked_fires
+WHERE fire_rank = 1
+ORDER BY STATE;

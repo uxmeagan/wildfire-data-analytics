@@ -6,13 +6,14 @@ Author: Meagan Barnhurst
 ===========================================================
 */
 
--- kpi summary
+-- KPI Summary
 
 SELECT
     COUNT(*) AS total_fires,
     SUM(fire_size) AS total_acres_burned,
     AVG(fire_size) AS avg_fire_size,
-    MAX(fire_size) AS largest_fire;
+    MAX(fire_size) AS largest_fire
+FROM fires;
 
 
 -- Largest Fire Details
@@ -29,7 +30,7 @@ ORDER BY FIRE_SIZE DESC
 LIMIT 1;
 
 
--- Fires by Year
+-- Fires by Year / Yearly summary
 
 SELECT
     FIRE_YEAR,
@@ -147,3 +148,22 @@ FROM Fires
 WHERE CONT_DATE IS NOT NULL
 GROUP BY FIRE_YEAR
 ORDER BY FIRE_YEAR;
+
+
+-- Number one fire by state
+
+SELECT
+    STATE,
+    FIRE_NAME,
+    FIRE_YEAR,
+    FIRE_SIZE
+FROM (
+    SELECT *,
+        RANK() OVER (
+            PARTITION BY STATE
+            ORDER BY FIRE_SIZE DESC
+        ) AS fire_rank
+    FROM Fires
+) AS ranked_fires
+WHERE fire_rank = 1
+ORDER BY STATE;
