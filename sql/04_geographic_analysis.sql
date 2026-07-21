@@ -73,7 +73,7 @@ FROM (
 	SELECT     
 		STATE,
 		STAT_CAUSE_DESCR,
-    	acres_burned,
+        acres_burned,
 		RANK() OVER (
 		PARTITION BY STATE
 	ORDER BY acres_burned DESC
